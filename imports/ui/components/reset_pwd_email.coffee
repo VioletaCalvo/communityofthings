@@ -1,213 +1,123 @@
 resetPaswordEmail = (user, url) ->
   """
-    <!-- body -->
-    <style>
-    /* -------------------------------------
-        GLOBAL
-    ------------------------------------- */
-    * {
-      font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-      font-size: 100%;
-      line-height: 1.6em;
-      margin: 0;
-      padding: 0;
-    }
-    img {
-      max-width: 600px;
-      width: auto;
-    }
-    body {
-      -webkit-font-smoothing: antialiased;
-      height: 100%;
-      -webkit-text-size-adjust: none;
-      width: 100% !important;
-    }
-    /* -------------------------------------
-        ELEMENTS
-    ------------------------------------- */
-    a {
-      color: #348eda;
-    }
-    .btn-primary {
-      Margin-bottom: 10px;
-      width: auto !important;
-    }
-    .btn-primary td {
-      background-color: #348eda;
-      border-radius: 25px;
-      font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-      font-size: 14px;
-      text-align: center;
-      vertical-align: top;
-    }
-    .btn-primary td a {
-      background-color: #348eda;
-      border: solid 1px #348eda;
-      border-radius: 25px;
-      border-width: 10px 20px;
-      display: inline-block;
-      color: #ffffff;
-      cursor: pointer;
-      font-weight: bold;
-      line-height: 2;
-      text-decoration: none;
-    }
-    .last {
-      margin-bottom: 0;
-    }
-    .first {
-      margin-top: 0;
-    }
-    .padding {
-      padding: 10px 0;
-    }
-    /* -------------------------------------
-        BODY
-    ------------------------------------- */
-    table.body-wrap {
-      padding: 20px;
-      width: 100%;
-    }
-    table.body-wrap .container {
-      border: 1px solid #f0f0f0;
-    }
-    /* -------------------------------------
-        FOOTER
-    ------------------------------------- */
-    table.footer-wrap {
-      clear: both !important;
-      width: 100%;
-    }
-    .footer-wrap .container p {
-      color: #666666;
-      font-size: 12px;
+<div id=":my" class="ii gt adP adO"><div id=":oa" class="a3s aXjCH m1559705e6c4229c7"><u></u>
 
-    }
-    table.footer-wrap a {
-      color: #999999;
-    }
-    /* -------------------------------------
-        TYPOGRAPHY
-    ------------------------------------- */
-    h1,
-    h2,
-    h3 {
-      color: #111111;
-      font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-      font-weight: 200;
-      line-height: 1.2em;
-      margin: 40px 0 10px;
-    }
-    h1 {
-      font-size: 36px;
-    }
-    h2 {
-      font-size: 28px;
-    }
-    h3 {
-      font-size: 22px;
-    }
-    p,
-    ul,
-    ol {
-      font-size: 14px;
-      font-weight: normal;
-      margin-bottom: 10px;
-    }
-    ul li,
-    ol li {
-      margin-left: 5px;
-      list-style-position: inside;
-    }
-    /* ---------------------------------------------------
-        RESPONSIVENESS
-    ------------------------------------------------------ */
-    /* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
-    .container {
-      clear: both !important;
-      display: block !important;
-      Margin: 0 auto !important;
-      max-width: 600px !important;
-    }
-    /* Set the padding on the td rather than the div for Outlook compatibility */
-    .body-wrap .container {
-      padding: 20px;
-    }
-    /* This should also be a block element, so that it will fill 100% of the .container */
-    .content {
-      display: block;
-      margin: 0 auto;
-      max-width: 600px;
-    }
-    /* Let's make sure tables in the content area are 100% wide */
-    .content table {
-      width: 100%;
-    }
-    </style>
-    <table class="body-wrap" bgcolor="#f6f6f6">
-      <tr>
-        <td></td>
-        <td class="container" bgcolor="#FFFFFF">
 
-          <!-- content -->
-          <div class="content">
-          <table>
-            <tr>
-              <td>
 
-                <h2>Hello,</h2>
-                <p>Click the link below to reset your password on <b>The Community of Things</b>.</p>
-                <!-- button -->
-                <table class="btn-primary center" cellpadding="0" cellspacing="0" border="0">
-                  <tr>
-                    <td>
-                      <a href="#{url.replace('#/', '')}">Reset password</a>
-                    </td>
-                  </tr>
-                </table>
-                <!-- /button -->
-                <p>If you didn't this request, please ignore it.</p>
-                <p>See you soon at The Community of Things!
-                  <br>
-                  Thank you,
-                </p>
-                <p>The CoT team</p>
-              </td>
-            </tr>
-          </table>
+
+
+
+
+
+
+
+  <div style="margin:0;padding:0">
+
+    <div style="min-width:320px;background-color:#fff" lang="x-wrapper">
+      <div style="Margin:0 auto;max-width:560px;min-width:280px;width:280px;width:calc(28000% - 173040px)">
+        <div style="border-collapse:collapse;display:table;width:100%">
+
+          <div style="Float:left;font-size:12px;line-height:19px;max-width:280px;min-width:140px;width:140px;width:calc(14000% - 78120px);padding:10px 0 5px 0;color:#939496;font-family:Avenir,sans-serif">
+
           </div>
-          <!-- /content -->
 
-        </td>
-        <td></td>
-      </tr>
-    </table>
-    <!-- /body -->
+          <div style="Float:left;font-size:12px;line-height:19px;max-width:280px;min-width:139px;width:139px;width:calc(14100% - 78680px);padding:10px 0 5px 0;text-align:right;color:#939496;font-family:Avenir,sans-serif">
 
-    <!-- footer -->
-    <table class="footer-wrap">
-      <tr>
-        <td></td>
-        <td class="container">
-
-          <!-- content -->
-          <div class="content">
-            <table>
-              <tr>
-                <td align="center">
-                  <p><a href="http://communityofthings.tk">The Community of Things</a>.
-                  </p>
-                </td>
-              </tr>
-            </table>
           </div>
-          <!-- /content -->
 
-        </td>
-        <td></td>
-      </tr>
-    </table>
-    <!-- /footer -->
+        </div>
+      </div>
+      <div style="Margin:0 auto;max-width:600px;min-width:320px;width:320px;width:calc(28000% - 173000px)">
+
+        <div style="font-size:26px;line-height:32px;Margin-top:6px;Margin-bottom:20px;color:#c3ced9;font-family:Roboto,Tahoma,sans-serif;Margin-left:20px;Margin-right:20px" align="center">
+          <div style="font-size:0px!important;line-height:0!important" align="center"><img style="min-height:auto;width:100%;border:0;max-width:72px" src="https://ci4.googleusercontent.com/proxy/7KD3uokbYijsgBo_5_4WHczarO5iP3Kfn-EPrdk0GsKj-MyKF58GV7ybYV1SAd-zXruMX6gM1jBjPDrT1QJJ6c4YiMgscZ3c-1Jxp-9bevHw6Z5Hk5vtExmH5pQFDQ=s0-d-e1-ft#http://i1.cmail2.com/ei/d/E8/AB8/3D6/223930/csfinal/energy-72-185844.png" alt="" width="72" class="CToWUd"></div>
+        </div>
+
+      </div>
+      <div style="Margin:0 auto;max-width:600px;min-width:320px;width:320px;width:calc(28000% - 173000px);word-wrap:break-word;word-break:break-word">
+        <div style="border-collapse:collapse;display:table;width:100%;background-color:#ffffff">
+
+          <div style="text-align:left;color:#656873;font-size:14px;line-height:21px;font-family:Avenir,sans-serif;max-width:600px;min-width:320px;width:320px;width:calc(28000% - 167400px)">
+
+            <div style="Margin-left:20px;Margin-right:20px">
+      <p style="Margin-top:0;Margin-bottom:0;font-family:bitter,georgia,serif;font-size:20px;line-height:28px;text-align:center" lang="x-size-24"><span><span style="color:#26a352"><strong>The Community of Things</strong></span></span></p><p style="Margin-top:20px;Margin-bottom:0;font-size:17px;line-height:26px;text-align:center" lang="x-size-20"><span style="color:#1f1f1f">Reset your password</span></p>
+    </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <div style="line-height:20px;font-size:20px">&nbsp;</div>
+
+      <div style="Margin:0 auto;max-width:600px;min-width:320px;width:320px;width:calc(28000% - 173000px);word-wrap:break-word;word-break:break-word">
+        <div style="border-collapse:collapse;display:table;width:100%;background-color:#ffffff">
+
+          <div style="text-align:left;color:#656873;font-size:14px;line-height:21px;font-family:Avenir,sans-serif;max-width:600px;min-width:320px;width:320px;width:calc(28000% - 167400px)">
+
+            <div style="Margin-left:20px;Margin-right:20px">
+      <p style="Margin-top:0;Margin-bottom:0;font-size:17px;line-height:26px" lang="x-size-20">Hello!</p><p style="Margin-top:20px;Margin-bottom:20px">Click teh link below to reset your password on The Community of Things.</p>
+    </div>
+
+            <div style="Margin-left:20px;Margin-right:20px">
+      <div style="text-align:center">
+        <u></u><a style="border-radius:4px;display:inline-block;font-size:14px;font-weight:bold;line-height:24px;padding:12px 24px;text-align:center;text-decoration:none!important;color:#1ba12d!important;border:1px solid #ff7600;font-family:Avenir,sans-serif;border-color:#1ba12d" href="#{url.replace('#/', '')}" target="_blank">RESET PASSWORD</a><u></u>
+      </div>
+    </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <div style="line-height:20px;font-size:20px">&nbsp;</div>
+
+      <div style="Margin:0 auto;max-width:600px;min-width:320px;width:320px;width:calc(28000% - 173000px);word-wrap:break-word;word-break:break-word">
+        <div style="border-collapse:collapse;display:table;width:100%;background-color:#ffffff">
+
+          <div style="text-align:left;color:#656873;font-size:14px;line-height:21px;font-family:Avenir,sans-serif;max-width:600px;min-width:320px;width:320px;width:calc(28000% - 167400px)">
+
+            <div style="Margin-left:20px;Margin-right:20px">
+      <p style="Margin-top:0;Margin-bottom:0">If you didn't this request, please ignore it.</p><p style="Margin-top:20px;Margin-bottom:0">See you soon at The Community of Things!</p><p style="Margin-top:20px;Margin-bottom:0">&nbsp; &nbsp; &nbsp;The CoT Team</p>
+    </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <div style="line-height:20px;font-size:20px">&nbsp;</div>
+
+      <div style="Margin:0 auto;max-width:600px;min-width:320px;width:320px;width:calc(28000% - 173000px);word-wrap:break-word;word-break:break-word">
+        <div style="border-collapse:collapse;display:table;width:100%">
+
+          <div style="text-align:left;font-size:12px;line-height:19px;color:#939496;font-family:Avenir,sans-serif;Float:left;max-width:400px;min-width:320px;width:320px;width:calc(8000% - 47600px)">
+            <div style="Margin-left:20px;Margin-right:20px;Margin-top:10px;Margin-bottom:10px">
+
+              <div>
+                <div>The Community of Things</div>
+              </div>
+              <div style="Margin-top:18px">
+
+              </div>
+            </div>
+          </div>
+
+          <div style="text-align:left;font-size:12px;line-height:19px;color:#939496;font-family:Avenir,sans-serif;Float:left;max-width:320px;min-width:200px;width:320px;width:calc(72200px - 12000%)">
+            <div style="Margin-left:20px;Margin-right:20px;Margin-top:10px;Margin-bottom:10px">
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div style="line-height:40px;font-size:40px">&nbsp;</div>
+
+  </div><img style="overflow:hidden;display:block!important;min-height:1px!important;width:1px!important;border:0!important;margin:0!important;padding:0!important" src="https://ci6.googleusercontent.com/proxy/5eG13i0LNa0uDKZd4F3qE-fwfqf4__P32_bjckA2tUQnMYO0h8u-PDGVpcnH2jA6vlD_8d98s8kUT-4mCEOCSAQ=s0-d-e1-ft#https://cot.cmail2.com/t/d-o-tusjik-l/o.gif" width="1" height="1" border="0" alt="" class="CToWUd"><div class="yj6qo"></div><div class="adL">
+</div></div><div class="adL">
+
+
+</div></div></div>
   """
 
 module.exports = resetPaswordEmail
