@@ -49,3 +49,4 @@ underscore
 mrt:cron
 poetic:materialize-scss@=1.97.5_2
 email
+reactive-var

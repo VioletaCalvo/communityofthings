@@ -19,7 +19,7 @@ Template.user_edit.events
         sAlert.success 'Profile updated!'
         FlowRouter.go 'user', {_id:Meteor.userId()}
       else
-        sAlert.error "Error: #{err.message}"
+        sAlert.error "Error: #{err.reason}"
 
   'click #cancel': ->
     FlowRouter.go 'user', {_id:Meteor.userId()}

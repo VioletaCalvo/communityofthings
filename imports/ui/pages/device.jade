@@ -9,8 +9,15 @@ template(name='device')
         if isMine
           a.btn-floating.waves-effect.waves-light#editDevice
             i.material-icons mode_edit
+          if isConfigured
+            a.btn-floating.waves-effect.waves-light.addLeftMargin15#shareDevice
+              i.material-icons share
+        else
+          h6.light
+            | Device of 
+            a #{ownerName}
       h5.center.grey-text.darken-3.thin
-        unless isOnline
+        if isOffline
           .red-text.darken-3.lihgt
             | #{onlineStatus}
             .smallText.thin.red-text.text-darken-1 last update: #{lastUpdate}
@@ -137,3 +144,47 @@ template(name='device')
                     if ../isMine
                       a.secondary-content.io-edit-btn.white(href='')
                         i.material-icons.grey-text.text-lighten-2 settings
+      //- OTHER USERS
+      if isMine
+        .divider
+        
+        .row
+          //- MONITOR USERS
+          unless monitorDetails
+            .col.s12.m6
+              .thin.center.addTopPadding15 No users with monitor rights
+          else
+            .col.s12.m6
+              ul.collection.with-header
+                li.collection-header
+                  h5.light Monitor users
+                each monitorDetails
+                  li.collection-item.avatar
+                    if this.imgUrl
+                      img.circle(src="{{this.imgUrl}}")
+                    else
+                      i.material-icons.circle.orange.lighten-3 visibility
+                    span.title.light #{this.fullName}
+                    p.blue-text #{this.email}
+                    //- a.secondary-content.io-delete-btn.white(href='')
+                    //-   i.material-icons.red-text.text-lighten-2 delete
+          //- MONITOR USERS
+          unless controlDetails
+            .col.s12.m6
+              .thin.center.addTopPadding15 No users with monitor rights
+          else
+            .col.s12.m6
+              ul.collection.with-header
+                li.collection-header
+                  h5.light Control users
+                each controlDetails
+                  li.collection-item.avatar
+                    if this.imgUrl
+                      img.circle(src="{{this.imgUrl}}")
+                    else
+                      i.material-icons.circle.orange.lighten-3 touch_app
+                    span.title.light #{this.fullName}
+                    p.blue-text #{this.email}
+                    //- a.secondary-content.io-delete-btn.white(href='')
+                    //-   i.material-icons.red-text.text-lighten-2 delete          
+      

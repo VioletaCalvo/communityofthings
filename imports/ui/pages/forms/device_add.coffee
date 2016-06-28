@@ -9,7 +9,7 @@ Template.device_add.events
           your device Python code.'
         FlowRouter.go 'device', {_id: res}
       else
-        sAlert.error "Error: #{err.message}"
+        sAlert.error "Error: #{err.reason}"
 
   'click #cancel': ->
     FlowRouter.go 'dashboard'

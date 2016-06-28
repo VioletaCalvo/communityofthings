@@ -2,7 +2,7 @@
 { Meteor } = require 'meteor/meteor'
 
 # my data, no need to subscribe
-Meteor.publish null, ->
+Meteor.publish 'publish', ->
   return [] unless @userId
   # publish my data
   me =
@@ -11,6 +11,7 @@ Meteor.publish null, ->
         firstName:1
         lastName:1
         imgUrl:1
+        contacts:1
   # publish my devices and devices I controll or I monitor
   query =
     $or: [{owner: @userId}, {controlUsers: @userId}, {monitorUsers: @userId}]
@@ -22,6 +23,8 @@ Meteor.publish null, ->
     owner:1
     io:1
     updatedAt:1
+    controlUsers:1
+    monitorUsers:1
   myDevices =
     Devices.find(query, fields: fields)
   [me, myDevices]
@@ -41,8 +44,6 @@ Meteor.publish 'device.ios', (id) ->
   if @userId is devicePrivate.owner
     fields =
       secret:1
-      controlUsers:1
-      monitorUsers:1
     # publish only this data to the owner
     device = Devices.find(id, fields: fields)
   else
@@ -58,3 +59,17 @@ Meteor.publish 'device.ios', (id) ->
   else
     cursors = [from, ios]
   cursors
+
+
+Meteor.publish 'my.contacts', ->
+  return [] unless @userId
+  fields =
+    firstName:1
+    lastName:1
+    imgUrl:1
+    emails:
+      address:1
+  # TODO fix this, only publish desired fields...
+  # console.log  Users.find(contacts:@userId, fields: fields).count()
+  # console.log  Users.find(contacts:@userId).count()
+  Users.find(contacts:@userId)

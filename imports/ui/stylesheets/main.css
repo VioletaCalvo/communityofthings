@@ -33,7 +33,7 @@ body {
 
 .loginCard {
   padding-top: 15px;
-  background-color: whitesmoke;
+  background-color: whitesmoke;margin-left
   background-color: rgba(255,255,255,0.85);
   max-width: 450px;
   margin:auto;
@@ -41,6 +41,15 @@ body {
 
 .addTopPadding15 {
   margin-top: 15px;
+}
+
+.addLeftMargin15 {
+  margin-left: 15px;
+}
+
+.io-edit-btn {
+  margin-top: 37px;
+  margin-right: -10px;
 }
 
 .io-edit-btn {

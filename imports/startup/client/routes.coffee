@@ -21,6 +21,7 @@ require '/imports/ui/pages/forms/device_add.coffee'
 require '/imports/ui/pages/forms/device_edit.jade'
 require '/imports/ui/pages/forms/device_edit.coffee'
 require '/imports/ui/pages/forms/device_share.jade'
+require '/imports/ui/pages/forms/device_share.coffee'
 require '/imports/ui/pages/forms/io_edit.jade'
 require '/imports/ui/pages/forms/io_edit.coffee'
 require '/imports/ui/pages/forms/user_edit.jade'
@@ -66,17 +67,21 @@ appRoute = (path)->
     triggersEnter: [AccountsTemplates.ensureSignedIn]
     name: template,
     subscriptions: (params, queryParams) ->
+      @register 'myData', Meteor.subscribe('publish')
       if template in ['device', 'device_edit', 'device_share']
         @register 'deviceIos', Meteor.subscribe('device.ios', params._id)
+        @register 'myContacts', Meteor.subscribe('my.contacts')
       else if template is 'io_edit'
         @register 'deviceIos', Meteor.subscribe('device.ios',
                                                       queryParams.deviceId)
+      else if template is 'dashboard'
+        @register 'myContacts', Meteor.subscribe('my.contacts')
     action: ->
       BlazeLayout.render 'layoutApp',
         content: template
 
 ## Routes
-appRoutes = [ '/dashboard', '/settings', '/user/:_id', '/user_edit',
+appRoutes = [ '/dashboard', '/user/:_id', '/user_edit',
            '/device/:_id', '/device_edit/:_id', '/device_share/:_id',
            '/device_add', '/io_edit/:_id']
 

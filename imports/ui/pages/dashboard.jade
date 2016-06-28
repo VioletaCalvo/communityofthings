@@ -28,21 +28,21 @@ template(name='dashboard')
               i.material-icons add
     //- DEVICES WITH RIGHTS
     .row
-      .col.s12
-        if controlDevices
-          ul.collection.with-header
-            li.collection-header
-              h5 Devices with rights
-            each controlDevices
-              li.collection-item.avatar
-                i.material-icons.circle.red folder
-                span.title #{this.name}
-                p 
+      .col.s12.m8.offset-m2
+        if otherDevices
+          h5.light.center-align Other devices
+          h6.light.center monitor/control devices
+          .collection
+            each otherDevices
+              a.collection-item.avatar(href='') 
+                i.material-icons.circle(class='{{this.class}}') #{this.icon}
+                span.title.light #{this.name}
+                .grey-text.text-darken-1.light 
                   | #{this.onlineStatus}
-                  | Device of
-                  a #{this.ownerName}
+                .thin Device of #{this.ownerName}
         else
           .divider
           .center.addTopPadding15
-            h5.grey-text You haven't rights of any device
+            h5.grey-text You haven't rights for any other device
             //- send private message?
+    

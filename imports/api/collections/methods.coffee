@@ -111,3 +111,62 @@ Meteor.methods
     unless device.owner is @userId
       throw new Meteor.Error(403, 'You no have rights to remove this IO.')
     IOs.remove io._id
+
+  'device.share': (fields) ->
+    return unless @userId
+    check fields,
+      userEmail: String
+      deviceId: String
+      rights: String
+    return unless fields.rights in ['revoke', 'control', 'monitor']
+    device = Devices.findOne(fields.deviceId)
+    unless device?
+      throw new Meteor.Error(404, 'Device not found.')
+    unless device.owner is @userId
+      throw new Meteor.Error(403, "You don't have rights to share this device.")
+    unless @isSimulation
+      user = Users.findOne('emails.address': fields.userEmail)
+      unless user
+        throw new Meteor.Error(404, 'User not found.')
+      if fields.rights is 'control'
+        if user._id in device.controlUsers
+          res =
+            message: "User with email '#{fields.userEmail}' has already control
+                      rights for this device"
+          return res
+        else user.id in
+          # update device
+          Devices.update device._id,
+            $addToSet:
+              controlUsers: user._id
+            $pull:
+              monitorUsers: user._id
+      else if fields.rights is 'monitor'
+        if user._id in device.monitorUsers
+          res =
+            message: "User with email '#{fields.userEmail}' has already monitor
+                      rights for this device"
+          return res
+        else
+          # update device
+          Devices.update device._id,
+            $addToSet:
+              controlUsers: user._id
+            $pull:
+              monitorUsers: user._id
+      else
+        unless (user._id in device.monitorUsers) or \
+                (user._id in device.controlUsers)
+          res =
+            message: "User with email '#{fields.userEmail}' has not monitor or
+                      control rights"
+          return res
+        else
+          # update device
+          Devices.update device._id,
+            $pull:
+              monitorUsers: user._id
+              controlUsers:user._id
+      # update user contacts
+      Users.update @userId, $addToSet: {contacts: user._id}
+      Users.update user._id, $addToSet: {contacts: @userId}

@@ -1,0 +1,49 @@
+template(name='device_share')
+  unless Template.subscriptionsReady
+    .progress
+      .indeterminate
+  else
+    with device
+      .row
+        .col.s12.m8.offset-m2
+          .card
+            .card-content
+              span.card-title Share device
+              .addTopPadding15
+                .blue-text.light Device name
+                .grey-text.text-darken-1(style='word-wrap: break-word;') #{name}
+              .addTopPadding15
+              p.grey-text.text-darken-4.thin
+                | Please, enter the user email and select rights to share this
+                | device
+              .addTopPadding15
+              .input-field
+                input.validate#userEmail(type='email')
+                label(for='userEmail') User email
+              .addTopPadding15#rights
+                .light.grey-text.text-darken-4
+                  input#revoke.with-gap(name='rights' type='radio'
+                                         value='revoke')
+                  label(for='revoke') Revoke rights
+                .light.grey-text.text-darken-4
+                  input#monitor.with-gap(name='rights' type='radio'
+                                         value='monitor')
+                  label(for='monitor') Give only monitor rights
+                .light.grey-text.text-darken-4
+                  input#control.with-gap(name='rights' type='radio'
+                                         value='control')
+                  label(for='control') Give control rights
+              .addTopPadding15
+            .card-action
+              a.grey-text.text-lightten-1.italics#cancel(href='') Cancel
+              a(href='')#share Share
+
+      //- //- Confirm delete dialog
+      //- #confirmDelete.modal
+      //-   .modal-content
+      //-     h4.thin Confirm
+      //-     p Please, confirm you want to delete the device 
+      //-       b "#{this.name}"
+      //-   .modal-footer
+      //-     a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='')#delete Delete
+      //-     a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='') Cancel

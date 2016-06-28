@@ -27,7 +27,7 @@ Template.device_edit.events
         sAlert.success 'Device sucessfully updated.'
         FlowRouter.go 'device', {_id: id}
       else
-        sAlert.error "Error: #{err.message}"
+        sAlert.error "Error: #{err.reason}"
 
   'click #delete': (e, tpl) ->
     id = FlowRouter.getParam '_id'
@@ -36,7 +36,7 @@ Template.device_edit.events
         sAlert.success 'Device sucessfully deleted.'
         FlowRouter.go 'device', {_id: id}
       else
-        sAlert.error "Error: #{err.message}"
+        sAlert.error "Error: #{err.reason}"
 
   'click #cancel': ->
     id = FlowRouter.getParam '_id'
