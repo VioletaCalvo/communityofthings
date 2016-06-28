@@ -155,7 +155,7 @@ resetPaswordEmail = (user, url) ->
             <tr>
               <td>
 
-                <h2>Hello #{user.FirstName},</h2>
+                <h2>Hello,</h2>
                 <p>Click the link below to reset your password on <b>The Community of Things</b>.</p>
                 <!-- button -->
                 <table class="btn-primary center" cellpadding="0" cellspacing="0" border="0">
@@ -167,7 +167,7 @@ resetPaswordEmail = (user, url) ->
                 </table>
                 <!-- /button -->
                 <p>If you didn't this request, please ignore it.</p>
-                <p>See you soon at <a href="http://communityofthings.tk">The Community of Things</a>!
+                <p>See you soon at The Community of Things!
                   <br>
                   Thank you,
                 </p>
