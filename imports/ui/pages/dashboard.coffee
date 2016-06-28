@@ -1,29 +1,5 @@
 Template.dashboard.onCreated ->
   $('.tooltipped').tooltip({delay: 50})
-  # otherDevices = new ReactiveVar
-  # @autorun =>
-  #   me = Meteor.userId()
-  #   console.log me
-  #   devices = []
-  #   query =
-  #     $or: [{controlUsers: @userId}, {monitorUsers: @userId}]
-  #   console.log Devices.find(query).count()
-  #   Devices.find(query).forEach (device) ->
-  #     console.log device.name
-  #     if device.onlineStatus is 'online'
-  #       device.icon = 'wifi_tethering'
-  #       device.class = 'cyan lighten-2'
-  #     else if device.onlineStatus is 'offline'
-  #       device.icon = 'portable_wifi_off'
-  #       device.class = 'grey'
-  #     else
-  #       device.icon = 'error_outline'
-  #       device.class = 'orange lighten-3'
-  #     device.ownerName =
-  #       Users.findOne(device.owner, fields:{firstName:1})?.firstName
-  #     devices.push device
-  #   devices.length
-  #   devices
 
 Template.dashboard.helpers
   ownDevices: ->

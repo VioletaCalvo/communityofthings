@@ -19,9 +19,9 @@ Meteor.startup ->
     { service: "google" },
     {
       $set: {
-        clientId: Meteor.settings.google.id,
+        clientId: "813783237966-f63g15l4e8r7utdcs4689rtpov7rlsa7.apps.googleusercontent.com",
         loginStyle: "popup",
-        secret: Meteor.settings.google.secret
+        secret: "bcg2QdIBbyf--QdbZzM1jsD-"
       }
     }
   )

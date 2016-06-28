@@ -166,8 +166,9 @@ template(name='device')
                       i.material-icons.circle.orange.lighten-3 visibility
                     span.title.light #{this.fullName}
                     p.blue-text #{this.email}
-                    //- a.secondary-content.io-delete-btn.white(href='')
-                    //-   i.material-icons.red-text.text-lighten-2 delete
+                    a.secondary-content.user-delete-btn.white(
+                                      href='?user={{this.id}}#confirmDelete')
+                      i.material-icons.red-text.text-lighten-2 delete
           //- MONITOR USERS
           unless controlDetails
             .col.s12.m6
@@ -185,6 +186,17 @@ template(name='device')
                       i.material-icons.circle.orange.lighten-3 touch_app
                     span.title.light #{this.fullName}
                     p.blue-text #{this.email}
-                    //- a.secondary-content.io-delete-btn.white(href='')
-                    //-   i.material-icons.red-text.text-lighten-2 delete          
+                    a.secondary-content.user-delete-btn.white(
+                                    href='?user={{this.id}}#confirmDelete')
+                      i.material-icons.red-text.text-lighten-2 delete          
       
+        //- Confirm delete dialog
+        #confirmDelete.modal
+          .modal-content
+            h4.thin Confirm
+            p Please, confirm you want to remove user to monitor/control
+              | your device 
+              b "#{this.name}"
+          .modal-footer
+            a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='')#delete Delete
+            a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='') Cancel

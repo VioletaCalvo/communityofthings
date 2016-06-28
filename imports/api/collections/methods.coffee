@@ -170,3 +170,23 @@ Meteor.methods
       # update user contacts
       Users.update @userId, $addToSet: {contacts: user._id}
       Users.update user._id, $addToSet: {contacts: @userId}
+
+  'revoke.rights': (fields) ->
+    return unless @userId
+    check fields,
+      deviceId: String
+      userId: String
+    device = Devices.findOne(fields.deviceId)
+    unless device?
+      throw new Meteor.Error(404, 'Device not found.')
+    unless device.owner is @userId
+      throw new Meteor.Error(403, "You don't have rights to share this device.")
+    unless @isSimulation
+      user = Users.findOne('emails.address': fields.userEmail)
+      unless user
+        throw new Meteor.Error(404, 'User not found.')
+      # update device
+      Devices.update device._id,
+        $pull:
+          monitorUsers: user._id
+          controlUsers:user._id

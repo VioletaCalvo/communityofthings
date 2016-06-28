@@ -20,7 +20,6 @@ Template.device.helpers
     if device.isMine
       if device.monitorUsers.length > 0
         device.monitorDetails = []
-        console.log userId
         for userId in device.monitorUsers
           user = Users.findOne(userId)
           details =
@@ -28,11 +27,9 @@ Template.device.helpers
             email: user.emails[0].address
             id: user._id
           device.monitorDetails.push details
-        console.log device.monitorDetails
       if device.controlUsers.length > 0
         device.controlDetails = []
         for userId in device.controlUsers
-          console.log userId
           user = Users.findOne(userId)
           details =
             fullName: "#{user.firstName} #{user.lastName}"
@@ -40,7 +37,6 @@ Template.device.helpers
             id: user._id
             imgUrl: user.imgUrl
           device.controlDetails.push details
-        console.log device.controlDetails
     device
 
 
@@ -70,3 +66,12 @@ Template.device.events
 
   'click .io-edit-btn': (e,tpl) ->
     FlowRouter.go 'io_edit', {_id: @_id}, {deviceId: @deviceId}
+
+  'click .user-delete-btn': (e,tpl) ->
+    userId = FlowRouter.getQueryParam 'user'
+    fields =
+      deviceId: @_id
+      userId: userId
+    Meteor.call 'revoke.rights', fields, (err, res) ->
+      if err
+        sAlert.error err.reason

@@ -2,5 +2,17 @@
 
 ```bash
 npm install
-meteor
+meteor --settings config/prod_settings.json
+```
+
+On file `config/prod_settings.json` you shoud configure your Goolge credentials for Oauth
+
+```json
+  {
+    "env": "PROD",
+    "google": {
+      "id": "xxxxxxxxxxxxxxxxxxxxxxxxx",
+      "secret": "xxxxxxxxxxxxxxxxxxx"
+    }
+  }
 ```

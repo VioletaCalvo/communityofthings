@@ -1,5 +1,7 @@
 Template.io_edit.onRendered ->
-  FlowRouter.subsReady 'deviceIos', ->
+  @autorun ->
+    # re-run this code on user change
+    Meteor.user()
     Tracker.afterFlush ->
       Materialize.updateTextFields()
       $('.modal-trigger').leanModal()
