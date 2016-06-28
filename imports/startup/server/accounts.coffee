@@ -1,4 +1,5 @@
-urlModule = require('url')
+{ Accounts } = require 'meteor/accounts-base'
+passwordEmail = require '/imports/ui/components/reset_pwd_email.coffee'
 
 Accounts.onCreateUser (options, user)->
   googleData = user.services['google']
@@ -13,12 +14,38 @@ Accounts.onCreateUser (options, user)->
   user
 
 
+Accounts.emailTemplates.siteName = "communityofthings.tk"
+Accounts.emailTemplates.from = "CoT accounts <no-reply@communityofthings.tk>"
+
+Accounts.emailTemplates.resetPassword =
+  from:() -> "CoT accounts <no-reply@communityofthings.tk>"
+  subject: (user) -> "Reset your pasword on The Community of Things"
+  text: (user, url) ->
+    text =
+      """Hello #{user.firtsName}!
+         \n\n
+         Click the link below to reset your password on The Community of Things
+         (CoT).
+         \n\n
+         #{url}
+         \n\n
+         If you didn't this request, please ignore it.
+         \n\n
+         See you soon at The Community of Things!
+         Thank you,
+         \n\n
+         \tThe CoT team
+      """
+    text
+  html: (user, url) ->
+    passwordEmail(user, url)
+
+
+
+
 Meteor.startup ->
   if Meteor.settings.env is 'LOCAL'
-    mailstring = Meteor.settings.mailgun
-    process.env.MAIL_URL = Meteor.settings.mailgun
-    mailUrl = urlModule.parse(mailstring)
-    console.log mailUrl.protocol
+    process.env.MAIL_URL = Meteor.settings.emailUrl
   # Configure services
   ServiceConfiguration.configurations.upsert(
     { service: "google" },

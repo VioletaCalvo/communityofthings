@@ -38,6 +38,8 @@ require '/imports/ui/stylesheets/main.scss'
 
 # helper functions
 notFoundRedirect = ->
+  console.log 'iepa'
+  console.log FlowRouter.getRouteName()
   if Meteor.userId()
     FlowRouter.go 'dashboard'
   else
@@ -100,7 +102,7 @@ appRoute(route) for route in appRoutes
 otherRoute(route) for route in otherRoutes
 
 ## USERACCOUNTS ROUTES
-# AccountsTemplates.configureRoute('changePwd')
+AccountsTemplates.configureRoute('changePwd')
 AccountsTemplates.configureRoute('forgotPwd')
 AccountsTemplates.configureRoute('resetPwd')
 AccountsTemplates.configureRoute('signIn')
