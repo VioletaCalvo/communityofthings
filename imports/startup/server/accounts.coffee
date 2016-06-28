@@ -1,3 +1,5 @@
+urlModule = require('url')
+
 Accounts.onCreateUser (options, user)->
   googleData = user.services['google']
   if googleData?
@@ -13,7 +15,10 @@ Accounts.onCreateUser (options, user)->
 
 Meteor.startup ->
   if Meteor.settings.env is 'LOCAL'
+    mailstring = Meteor.settings.mailgun
     process.env.MAIL_URL = Meteor.settings.mailgun
+    mailUrl = urlModule.parse(mailstring)
+    console.log mailUrl.protocol
   # Configure services
   ServiceConfiguration.configurations.upsert(
     { service: "google" },
