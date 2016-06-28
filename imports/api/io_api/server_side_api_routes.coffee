@@ -31,6 +31,7 @@ processResponse = (req, res) ->
 
 # DEFINE SERVER SIDE ROUTE (with Picker pakcage)
 # Include body parse NPM package to parse received JSON
+
 bodyParser = require('body-parser')
 Picker.middleware(bodyParser.json())
 Picker.middleware( bodyParser.urlencoded({ extended: false }))
