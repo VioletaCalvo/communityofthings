@@ -1,0 +1,29 @@
+template(name='user')
+  unless Template.subscriptionsReady
+    .progress
+      .indeterminate
+  else
+    with user
+      .row
+        .col.s12.m6.offset-m3.center.white.z-depth-1
+          h5.blue-text.text-darken-2.light
+            unless firstName
+              .red-text.text-lightten-2.left
+                 i.material-icons warning
+                 | update your profile
+                 br
+            .btn-floating.waves-effect.waves-light.right#editProfile
+              i.material-icons mode_edit
+            | #{firstName} #{lastName}
+          if imgUrl
+            .addTopPadding15
+            img.responsive-img.z-depth-1.circle(src='{{imgUrl}}', alt='')
+          .addTopPadding15  
+          table.bordered
+            tbody
+              tr
+                td.grey-text user id
+                td #{secretKey}
+              tr
+                td.grey-text email
+                td #{email}

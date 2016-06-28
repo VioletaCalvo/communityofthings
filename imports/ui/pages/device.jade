@@ -1,0 +1,139 @@
+template(name='device')
+  unless Template.subscriptionsReady
+    .progress
+      .indeterminate
+  else
+    with device
+      h4.center.thin
+        | #{name}
+        if isMine
+          a.btn-floating.waves-effect.waves-light#editDevice
+            i.material-icons mode_edit
+      h5.center.grey-text.darken-3.thin
+        unless isOnline
+          .red-text.darken-3.lihgt
+            | #{onlineStatus}
+            .smallText.thin.red-text.text-darken-1 last update: #{lastUpdate}
+        else
+          | #{onlineStatus}
+          if updatingIOs
+            .preloader-wrapper.small.active
+              .spinner-layer.spinner-yellow-only
+                .circle-clipper.left
+                  .circle
+                .gap-patch
+                  .circle
+                .circle-clipper.right
+                  .circle
+      unless isConfigured
+        .row
+          .col.s12.m8.offset-m2
+            .card
+              .card-content
+                span.card-title.red-text.darken-3 Device not configured
+                p.grey-text.text-darken-4 Please, configure your device with these credentials:
+                .addTopPadding15
+                  .blue-text.light Device ID
+                  .grey-text.text-darken-1(style='word-wrap: break-word;') #{_id}
+                .addTopPadding15
+                  .blue-text.light Device secret
+                  p.grey-text.text-darken-1(style='word-wrap: break-word;') #{secret}
+                .addTopPadding15
+      else
+        //- DIGITAL IO
+        .row
+          //- DIGITAL OUTPUTS 
+          unless DOs
+            .col.s12.m6
+              .thin.center.addTopPadding15 No digital outputs
+          else
+            .col.s12.m6
+              ul.collection.with-header
+                li.collection-header
+                  h5.light Digital outputs
+                each DOs
+                  li.collection-item.avatar
+                    i.material-icons.circle.purple.lighten-4 lightbulb_outline
+                    span.title.light #{this.name} 
+                    p.blue-text
+                      //- Show also boolean values
+                      //- (otherwise is false=null and nothing is shown)
+                      if this.currentValue}
+                        | True
+                      else
+                        | False
+                    .switch.secondary-content(id='{{this._id}}')
+                      label
+                        | False
+                        input(type='checkbox' checked='{{this.desiredValue}}'
+                              disabled='{{../disableControl}}')
+                        span.lever
+                        | True
+                    if ../isMine
+                      a.secondary-content.io-edit-btn.white(href='')
+                        i.material-icons.grey-text.text-lighten-2 settings
+          //- DIGITAL INPUTS
+          unless DIs
+            .col.s12.m6
+              .thin.center.addTopPadding15 No digital inputs
+          else
+            .col.s12.m6
+              ul.collection.with-header
+                li.collection-header
+                  h5.light Digital inputs
+                each DIs
+                  li.collection-item.avatar
+                    i.material-icons.circle.blue.lighten-3 radio_button_checked
+                    span.title.light #{this.name}
+                    p.blue-text
+                      //- Show also boolean values
+                      //- (otherwise is false=null and nothing is shown)
+                      if this.currentValue}
+                        | True
+                      else
+                        | False
+                    if ../isMine
+                      a.secondary-content.io-edit-btn.white(href='')
+                        i.material-icons.grey-text.text-lighten-2 settings
+        //- ANALOG IO
+        .row
+          //- ANALOG OUTPUTS
+          unless AOs
+            .col.s12.m6
+              .thin.center.addTopPadding15 No analog outputs
+          else
+            .col.s12.m6
+              ul.collection.with-header
+                li.collection-header
+                  h5.light Analog outputs
+                each AOs
+                  li.collection-item.avatar
+                    i.material-icons.circle.green.lighten-3 settings_remote
+                    span.title.light #{this.name}
+                    p.blue-text #{this.currentValue} #{this.unit}
+                    form.secondary-content
+                      p.range-field
+                        input(type='range' min='0' max='255' 
+                              value='{{this.desiredValue}}'
+                              disabled='{{../disableControl}}')
+                    if ../isMine
+                      a.secondary-content.io-edit-btn.white(href='')
+                        i.material-icons.grey-text.text-lighten-2 settings
+          //- ANALOG INPUTS
+          unless AIs
+            .col.s12.m6
+              .thin.center.addTopPadding15 No analog inputs
+          else
+            .col.s12.m6
+              ul.collection.with-header
+                li.collection-header
+                  h5.light Analog inputs
+                each AIs
+                  li.collection-item.avatar
+                    i.material-icons.circle.pink.lighten-4 settings_input_svideo
+                    span.title.light #{this.name}
+                        i.material-icons.grey-tex
+                    p.blue-text #{this.currentValue} #{this.unit}
+                    if ../isMine
+                      a.secondary-content.io-edit-btn.white(href='')
+                        i.material-icons.grey-text.text-lighten-2 settings

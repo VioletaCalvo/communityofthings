@@ -1,0 +1,35 @@
+template(name='io_edit')
+  unless Template.subscriptionsReady
+    .progress
+      .indeterminate
+  else
+    with io
+      .row
+        .col.s12.m8.offset-m2
+          .card
+            .card-content
+              span.card-title Edit IO
+              .input-field
+                input.validate#ioName(type='text' value='{{this.name}}')
+                label(for='ioName') IO name
+              .addTopPadding15
+                .blue-text.thin Device name
+                .grey-text.text-darken-1(style='word-wrap: break-word;') #{this.deviceName}
+              .addTopPadding15
+                .blue-text.thin IO id
+                p.grey-text.text-darken-1(style='word-wrap: break-word;') #{this.ioId}
+              .addTopPadding15
+              .card-action
+                a.grey-text.text-lightten-1.italics#cancel(href='') Cancel
+                a.red-text.text-lightten-1.modal-trigger(href='#confirmDelete') Delete
+                a(href='')#update Update
+    
+      //- Confirm delete dialog
+      .modal.device_edit#confirmDelete
+        .modal-content
+          h4.thin Confirm
+          p Please, confirm you want to delete this IO 
+          b "#{this.name} (#{this.ioId})"
+        .modal-footer
+          a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='')#delete Delete
+          a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='') Cancel

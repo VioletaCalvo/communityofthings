@@ -1,0 +1,44 @@
+template(name='navbar')
+  .navbar-fixed
+    ul#userMenu.dropdown-content
+      li#goMyProfile
+        a(href='')
+          i.small.material-icons.right account_circle
+          | My Profile
+      li.divider
+      li#logout
+        a 
+          i.small.material-icons.right exit_to_app
+          | Log out
+    nav
+      .nav-wrapper(style='padding-left: 15px;')
+        a.brand-logo.hide-on-small-only.fontCot The Community of Things
+        a.brand-logo.hide-on-med-and-up.fontCot CoT
+        a.button-collapse#slideOut(href='', data-activates='slide-out')
+          i.material-icons menu
+        //- NAV BAR ON WHIDE SCREENS
+        ul#slide-in.right.hide-on-med-and-down
+          li#goDashboard
+            a(href='/dashboard')
+              i.small.material-icons.right home
+              | Dashboard
+          li
+            a.dropdown-button(href='', data-activates='userMenu')
+              | My account
+              i.material-icons.right more_vert
+        //- SLIDE MENU ON SMALL AND MEDIUM SCREENS
+        ul#slide-out.side-nav
+          h4.green-text.center.fontCot The Community of Things
+          .divider
+          li
+            a(href='/dashboard')
+              i.small.material-icons.right home
+              | Dashboard
+          li#goMyProfile
+            a(href='')
+              i.small.material-icons.right account_circle
+              | My Profile
+          li#logout
+            a 
+              i.small.material-icons.right exit_to_app
+              | Log out

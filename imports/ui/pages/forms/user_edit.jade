@@ -1,0 +1,34 @@
+template(name='user_edit')
+  with user
+    .row
+      .col.s12.m6.offset-m3
+        .card
+          .card-content
+            span.card-title Edit profile
+            .addTopPadding15
+              .input-field
+                input.validate#firstName(type='text' value='{{this.firstName}}')
+                label(for='firstName') First name
+              .input-field
+                input.validate#lastName(type='text' value='{{this.lastName}}')
+                label(for='lastName') Last name
+          .card-action
+            a.grey-text.text-lightten-1.italics(href='')#cancel Cancel
+            a(href='')#updateUser Update profile
+  //- with user
+  //-   .row
+  //-     .col.s12.m6.offset-m3.center
+  //-       h5.grey-text.text-darken-4.thin
+  //-         | Edit profile
+  //-         a.btn-floating.waves-effect.waves-light.right#editProfile
+  //-         i.material-icons#close close
+  //-       .addTopPadding15 
+  //-       .input-field
+  //-         input.validate#firstName(type='text' value='{{this.firstName}}')
+  //-         label(for='firstName') First name
+  //-       .input-field
+  //-         input.validate#lastName(type='text' value='{{this.lastName}}')
+  //-         label(for='lastName') Last name
+  //-       .addTopPadding15
+  //-       a.btn-floating.waves-effect.waves-light.right(href='')#updateUser
+  //-         i.material-icons save

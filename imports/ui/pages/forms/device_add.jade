@@ -1,0 +1,18 @@
+template(name='device_add')
+  .row
+    .col.s12.m6.offset-m3
+      .card
+        .card-content
+          span.card-title New device
+          p.grey-text
+            | Insert the device name to get the credentials for your new device
+          .addTopPadding15
+          .input-field
+            input.validate#deviceName(type='text')
+            label(for='deviceName') Device Name
+        .card-action
+          a.grey-text.text-lightten-1.italics(href='')#cancel Cancel
+          a(href='')#addDevice Add this device
+          
+
+    

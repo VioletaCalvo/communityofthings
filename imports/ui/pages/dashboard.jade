@@ -1,0 +1,48 @@
+template(name='dashboard')
+  unless Template.subscriptionsReady
+    .progress
+      .indeterminate
+  else
+    //- OWNER DEVICES
+    .row
+      .col.s12.m8.offset-m2
+        if ownDevices
+          h5.light.center-align Your devices
+            a.btn-floating.waves-effect.waves-light#addDevice
+              i.material-icons add
+          .collection
+            each ownDevices
+              a.collection-item.avatar(href='') 
+                i.material-icons.circle(class='{{this.class}}') #{this.icon}
+                span.title.light #{this.name}
+                .grey-text.text-darken-1.light #{this.onlineStatus}
+                unless isConfigured
+                  .secondary-content
+                    a.tooltipped(href='' data-position='bottom' data-delay='50'
+                        data-tooltip="you haven't configured this device")
+                      i.material-icons.blue-text.text-lighten-3 info
+        else
+          .center
+            h5.grey-text You don't own any device
+            a.btn-floating.waves-effect.waves-light.center#addDevice
+              i.material-icons add
+    //- DEVICES WITH RIGHTS
+    .row
+      .col.s12
+        if controlDevices
+          ul.collection.with-header
+            li.collection-header
+              h5 Devices with rights
+            each controlDevices
+              li.collection-item.avatar
+                i.material-icons.circle.red folder
+                span.title #{this.name}
+                p 
+                  | #{this.onlineStatus}
+                  | Device of
+                  a #{this.ownerName}
+        else
+          .divider
+          .center.addTopPadding15
+            h5.grey-text You haven't rights of any device
+            //- send private message?

@@ -1,0 +1,65 @@
+body {
+  background-color: whitesmoke;
+}
+
+.fontCot {
+  font-family: 'Stint Ultra Condensed', cursive;
+}
+
+.mainContainer {
+  /*display: flex;*/
+  padding-top: 30px;
+  min-height: calc(100vh - 154px);
+  /*background-image: url('background.png');*/
+  /*flex-direction: column;*/
+}
+
+.loginButtons {
+  padding: 15px 0 30px;
+  background-color: #FFF;
+  background-color: rgba(0,0,0,0.2);
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 70vh;
+  z-index: 999;
+}
+
+.loginContent {
+  position: relative;
+  z-index: 999;
+}
+
+
+.loginCard {
+  padding-top: 15px;
+  background-color: whitesmoke;
+  background-color: rgba(255,255,255,0.85);
+  max-width: 450px;
+  margin:auto;
+}
+
+.addTopPadding15 {
+  margin-top: 15px;
+}
+
+.io-edit-btn {
+  margin-top: 37px;
+  margin-right: -10px;
+}
+
+.fullHeight {
+  min-height: 100vh;
+}
+
+.fullWidth {
+  min-width: 100%;
+}
+
+.notFoundTitle {
+  text-shadow: 0px 0px 30px #4d9950;
+}
+
+.smallText {
+  font-size: small;
+}

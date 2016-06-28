@@ -1,0 +1,32 @@
+//- Login layout
+template(name='layoutLogin')
+  +meteorStatus(lang='en')
+  +accountsBackground
+  .loginContent
+    .center
+      .container.hide-on-small-only
+        .row(style='min-height: 5vh;')
+        .row
+          .col.m6.offset-m3.loginCard
+            h3.green-text.text-darken-4.thin.fontCot The Community of Things
+            .container
+              br
+              +atForm
+              br
+      .loginCard.hide-on-med-and-up(style='min-height: 100vh;')
+        h4.green-text.fontCot The Community of Things
+        .container
+          br
+          +atForm
+          br
+
+//- Full screen landing layout
+template(name='layoutLanding')
+  +Template.dynamic template=content
+
+//- Full screen standard layout
+template(name='layoutApp')
+  +meteorStatus(lang='en')
+  +navbar
+  .container.mainContainer
+    +Template.dynamic template=content

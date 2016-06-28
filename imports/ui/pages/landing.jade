@@ -1,0 +1,58 @@
+template(name='landing')
+  .slider.fullscreen
+    ul.slides
+      li
+        img(src='/landing_images/landing_1.jpg')
+        .caption.center-align
+          h5.light.grey-text.text-lighten-3 Wellcome to the future!
+          h1.fontCot The Community of Things
+      li
+        img(src='/landing_images/landing_2.jpg')
+        .caption.left-align
+          h2.fontCot A Community to control them all
+          h5.light.grey-text.text-lighten-3 
+            | Control any device in the world.
+      li
+        img(src='/landing_images/landing_3.jpg')
+        .caption.right-align
+          h2.fontCot  Simple and easy
+          h5.light.grey-text.text-lighten-3
+            | Copnnect your device in minutes.
+      li
+        img(src='/landing_images/landing_4.jpg')
+        .caption.center-align
+          h2.fontCot  Share your devices
+          h5.light.grey-text.text-lighten-3
+            | Share your devices with anyone in the community.
+  .loginButtons.center
+    h5.light.grey-text.text-lighten-3 Enter the community
+    a.waves-effect.waves-light.btn(href='/sign-in')#goSignIn Sign in
+    a.waves-effect.waves-light.btn(href='/sign-up')#goSignUp Sign up
+
+
+template(name='terms-of-use')
+  .container
+    .valign-wrapper
+      h5.valing Terms of use page
+  
+template(name='privacy')
+  .container
+    .valign-wrapper
+      h5.valing Privacy page
+  
+template(name='notFound')
+  .container
+    .valign-wrapper.fullHeight
+      .valing.center.fullWidth
+        h2.thin.green-text.text-darken-2.notFoundTitle
+          | The owls are not what they seem
+        h4.thin.red-text.text-lighten-2 404 Not Found
+        h5.thin redirecting...
+        .preloader-wrapper.small.active
+          .spinner-layer.spinner-green-only
+            .circle-clipper.left
+              .circle
+            .gap-patch
+              .circle
+            .circle-clipper.right
+              .circle

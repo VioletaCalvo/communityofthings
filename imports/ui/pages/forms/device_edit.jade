@@ -1,0 +1,35 @@
+template(name='device_edit')
+  unless Template.subscriptionsReady
+    .progress
+      .indeterminate
+  else
+    with device
+      .row
+        .col.s12.m8.offset-m2
+          .card
+            .card-content
+              span.card-title Edit device
+              .input-field
+                input.validate#deviceName(type='text' value='{{this.name}}')
+                label(for='deviceName') Device Name
+              .addTopPadding15
+                .blue-text.light Device ID
+                .grey-text.text-darken-1(style='word-wrap: break-word;') #{this._id}
+              .addTopPadding15
+                .blue-text.light Device secret
+                p.grey-text.text-darken-1(style='word-wrap: break-word;') #{this.secret}
+              .addTopPadding15
+            .card-action
+              a.grey-text.text-lightten-1.italics#cancel(href='') Cancel
+              a.red-text.text-lightten-1.modal-trigger(href='#confirmDelete') Delete
+              a(href='')#update Update
+
+      //- Confirm delete dialog
+      #confirmDelete.modal
+        .modal-content
+          h4.thin Confirm
+          p Please, confirm you want to delete the device 
+            b "#{this.name}"
+        .modal-footer
+          a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='')#delete Delete
+          a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='') Cancel
