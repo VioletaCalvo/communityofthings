@@ -7,6 +7,7 @@ UpdateIOs =
     deviceFields =
       onlineStatus: 'online'
       updatedAt: now
+      updatingIOs: false
     for io in deviceData.IO
       ioOld = IOs.findOne(ioId: io.id, deviceId: device._id)
       # if IO doesn't exists create it
@@ -35,12 +36,10 @@ UpdateIOs =
           updatedAt: now
         # If a value is not the desired value updatingIOs will be true
         if (io.value isnt ioOld.desiredValue) and (io.type in ['DO', 'AO'])
-          updatingIOs = true
+          deviceFields.updatingIOs = true
         if io.unit then fields.unit = io.unit
         IOs.update ioOld._id, $set: fields
         updatedIos.push ioOld._id
-    unless updatingIOs
-      deviceFields.updatingsIOs = false
     # update IOs difference
     iosDifference = _.difference(device.io, updatedIos)
     # TODO: do not update non active ios all times
@@ -52,7 +51,7 @@ UpdateIOs =
       # console.log _.union(updatedIos, device.io)
       devideFields.io = _.union(updatedIos, device.io)
     # update device
-    Devices.update deviceData.deviceId, $set: fields
+    Devices.update deviceData.deviceId, $set: deviceFields
 
   createDbIOs: (deviceData) ->
     iosIds = []
