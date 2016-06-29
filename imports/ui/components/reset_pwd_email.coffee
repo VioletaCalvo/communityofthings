@@ -1,16 +1,6 @@
 resetPaswordEmail = (user, url) ->
   """
 <div id=":my" class="ii gt adP adO"><div id=":oa" class="a3s aXjCH m1559705e6c4229c7"><u></u>
-
-
-
-
-
-
-
-
-
-
   <div style="margin:0;padding:0">
 
     <div style="min-width:320px;background-color:#fff" lang="x-wrapper">
@@ -95,7 +85,7 @@ resetPaswordEmail = (user, url) ->
             <div style="Margin-left:20px;Margin-right:20px;Margin-top:10px;Margin-bottom:10px">
 
               <div>
-                <div>The Community of Things</div>
+                <a href"https://communitythings.herokuapp.com">The Community of Things</a>
               </div>
               <div style="Margin-top:18px">
 

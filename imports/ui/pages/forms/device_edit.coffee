@@ -36,7 +36,7 @@ Template.device_edit.events
     Meteor.call 'device.delete', id, (err, res) ->
       unless err
         sAlert.success 'Device sucessfully deleted.'
-        FlowRouter.go 'device', {_id: id}
+        FlowRouter.go 'dashboard'
       else
         sAlert.error "Error: #{err.reason}"
 
