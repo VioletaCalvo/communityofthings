@@ -151,9 +151,9 @@ Meteor.methods
           # update device
           Devices.update device._id,
             $addToSet:
-              controlUsers: user._id
-            $pull:
               monitorUsers: user._id
+            $pull:
+              controlUsers: user._id
       else
         unless (user._id in device.monitorUsers) or \
                 (user._id in device.controlUsers)
@@ -182,7 +182,7 @@ Meteor.methods
     unless device.owner is @userId
       throw new Meteor.Error(403, "You don't have rights to share this device.")
     unless @isSimulation
-      user = Users.findOne('emails.address': fields.userEmail)
+      user = Users.findOne(fields.userId)
       unless user
         throw new Meteor.Error(404, 'User not found.')
       # update device

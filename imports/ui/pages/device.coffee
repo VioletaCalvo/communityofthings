@@ -1,3 +1,11 @@
+Template.device.onRendered ->
+  @autorun ->
+    # re-run this code on user change
+    Meteor.user()
+    Tracker.afterFlush ->
+      Materialize.updateTextFields()
+      $('.modal-trigger').leanModal()
+
 Template.device.helpers
   device: ->
     id = FlowRouter.getParam '_id'
@@ -40,7 +48,6 @@ Template.device.helpers
     device
 
 
-
 Template.device.events
   'click #editDevice': ->
     FlowRouter.go 'device_edit', {_id:@_id}
@@ -67,11 +74,17 @@ Template.device.events
   'click .io-edit-btn': (e,tpl) ->
     FlowRouter.go 'io_edit', {_id: @_id}, {deviceId: @deviceId}
 
-  'click .user-delete-btn': (e,tpl) ->
+  'click .user-delete-btn': () ->
+    FlowRouter.setQueryParams {user: @id}
+    $('#confirmDelete').openModal()
+
+  'click #delete': (e,tpl) ->
+    FlowRouter.setQueryParams {}
     userId = FlowRouter.getQueryParam 'user'
     fields =
       deviceId: @_id
       userId: userId
+    $('#confirmDelete').closeModal()
     Meteor.call 'revoke.rights', fields, (err, res) ->
       if err
         sAlert.error err.reason

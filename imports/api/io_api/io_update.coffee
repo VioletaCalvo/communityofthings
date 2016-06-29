@@ -4,6 +4,9 @@ UpdateIOs =
     updatedIos = []
     now = new Date
     updatingIOs = false
+    deviceFields =
+      onlineStatus: 'online'
+      updatedAt: now
     for io in deviceData.IO
       ioOld = IOs.findOne(ioId: io.id, deviceId: device._id)
       # if IO doesn't exists create it
@@ -37,7 +40,7 @@ UpdateIOs =
         IOs.update ioOld._id, $set: fields
         updatedIos.push ioOld._id
     unless updatingIOs
-      Devices.update device._id, $set: {updatingIOs: false}
+      deviceFields.updatingsIOs = false
     # update IOs difference
     iosDifference = _.difference(device.io, updatedIos)
     # TODO: do not update non active ios all times
@@ -47,13 +50,9 @@ UpdateIOs =
     unless iosDifference.length is 0
       # console.log 'iosUnion'
       # console.log _.union(updatedIos, device.io)
-      Devices.update deviceData.deviceId,
-        $set:
-          io: _.union(updatedIos, device.io)
-          onlineStatus: 'online'
-          updatedAt: now
-    else unless device.onlineStatus is 'online'
-      Devices.update deviceData.deviceId, $set: {onlineStatus: 'online'}
+      devideFields.io = _.union(updatedIos, device.io)
+    # update device
+    Devices.update deviceData.deviceId, $set: fields
 
   createDbIOs: (deviceData) ->
     iosIds = []
@@ -124,9 +123,5 @@ onlineStatusUpdate = () ->
   options = {multi: true}
   Devices.update(query, update, options)
 
-# define a cron to update the device status
-# this cron executes every minute
-onlineStatusCron = new Meteor.Cron(
-  events:
-    "*/1 * * * *": onlineStatusUpdate()
-)
+# check status every offlineTime (1 minute)
+setInterval(Meteor.bindEnvironment(onlineStatusUpdate), offlineTime)

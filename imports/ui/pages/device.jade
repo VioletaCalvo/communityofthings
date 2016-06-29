@@ -187,7 +187,7 @@ template(name='device')
                     span.title.light #{this.fullName}
                     p.blue-text #{this.email}
                     a.secondary-content.user-delete-btn.white(
-                                    href='?user={{this.id}}#confirmDelete')
+                                    href='')
                       i.material-icons.red-text.text-lighten-2 delete          
       
         //- Confirm delete dialog
@@ -195,8 +195,7 @@ template(name='device')
           .modal-content
             h4.thin Confirm
             p Please, confirm you want to remove user to monitor/control
-              | your device 
-              b "#{this.name}"
+              | your device "#{this.name}"
           .modal-footer
             a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='')#delete Delete
             a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='') Cancel
