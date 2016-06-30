@@ -44,6 +44,7 @@ Accounts.emailTemplates.resetPassword =
 
 
 Meteor.startup ->
+  console.log "***********Meteor app started************"
   if Meteor.settings.env is 'LOCAL'
     process.env.MAIL_URL = Meteor.settings.emailUrl
   # Configure services
