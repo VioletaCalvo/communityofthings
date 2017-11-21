@@ -1,3 +1,5 @@
+#import { Email } from 'meteor/email'
+
 Meteor.methods
   # Update my profile
   'user.update': (profile)->
@@ -190,3 +192,53 @@ Meteor.methods
         $pull:
           monitorUsers: user._id
           controlUsers:user._id
+
+  'email.me.smtp': ->
+    return unless @userId
+    userEmail = Users.findOne(@userId).emails?[0]?.address
+    throw new Meteor.Error(404, "User email not found") unless userEmail
+    return if @isSimulation
+    # Send via the SendGrid SMTP API, using meteor email package
+    Email.send
+      from: Meteor.settings.sendgrid.sender_email
+      to: userEmail
+      subject: "your template subject here"
+      text: "template plain text here"
+      html: "template body content here"
+      headers:
+        'X-SMTPAPI':
+          {
+            "filters": {
+              "templates": {
+                "settings": {
+                  "enable": 1,
+                  "template_id": 'c040acdc-f938-422a-bf67-044f85f5aa03'
+                }
+              }
+            }
+          }
+
+
+  'email.me.webapi': ->
+    return unless @userId
+    userEmail = Users.findOne(@userId).emails?[0]?.address
+    throw new Meteor.Error(404, "User email not found") unless userEmail?
+    return if @isSimulation
+    # Send via the SendGrid Web API v3, using meteor http package
+    endpoint = 'https://api.sendgrid.com/v3/mail/send'
+    options =
+      headers:
+        "Authorization": "Bearer #{Meteor.settings.sendgrid.api_key}"
+        "Content-Type": "application/json"
+      data:
+        personalizations: [
+          to: [ {email: userEmail} ]
+          subject: 'the template subject'
+        ]
+        from:
+          email: Meteor.settings.sendgrid.sender_email
+        content: [{  type: "text/html", value: "your body content here" }]
+        template_id: 'c040acdc-f938-422a-bf67-044f85f5aa03'
+
+    result = HTTP.post endpoint, options
+    console.log result
